@@ -15,7 +15,7 @@ export default new Router({
     {
       path: '/index/:id',
       name: 'index',
-      component: Index,
-    },
+      component: Index
+    }
   ]
 })
