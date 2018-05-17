@@ -5,6 +5,8 @@
     <button @click="refresh(1)" v-text="button1"></button>
     <button @click="refresh(2)" v-text="button2"></button>
     <button @click="refresh(3)" v-text="button3"></button>
+    <button @click="getDataNotSimple" v-text="button5"></button>
+    <button @click="getData" v-text="button4"></button>
     <router-view :key="$route.fullpath" v-text="button3"></router-view>
     <router-link to="2" :key="$route.fullpath" >About</router-link>
     <h1 v-text="whichOne"></h1>
@@ -15,16 +17,19 @@
 </template>
 <script>
 import { getList } from '@/common/commonConst'
+import { corsAPI } from './../api/index'
 
 export default {
   name: 'index',
-  data () {
+  data() {
     return {
       msg: '我是首页',
       studyList: '生命周期',
       button1: '去1',
       button2: '去2',
       button3: '在2',
+      button4: '我要跨域请求数据',
+      button5: '非简单跨域请求数据',
       name: [0]
 
       //      whichOne:whichOne,
@@ -57,6 +62,14 @@ export default {
     //    this.$router.push({path:to.path});
   },
   methods: {
+    getDataNotSimple() {
+      corsAPI.getCorsDataNotSimple();
+    },
+    getData() {
+      corsAPI.getCorsData().then(data => {
+        console.log(data)
+      })
+    },
     refresh(params) {
       if (params === 3) {
         console.log(params)

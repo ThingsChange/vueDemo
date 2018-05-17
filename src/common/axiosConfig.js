@@ -5,10 +5,12 @@
  *  @note 干什么的呢？
  * */
 import axios from 'axios'
-
-const token = ''
-axios.interceptors.request.use(config => {
-  if (token) {
+axios.interceptors.request.use(
+  (config) => {
+    return config // 添加这一行
+  },
+  error => {
+    return Promise.reject(error)
   }
-})
+)
 export default { axios }
