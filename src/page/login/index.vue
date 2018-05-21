@@ -1,7 +1,7 @@
 <template>
   <div  style="height: 100%; background-color: #0d6aad">
     <Form ref="loginForm" :model="loginForm"   style="width: 366px;top:50%;margin-top:-85px;left: 50%;margin-left: -183px;position: absolute"  :rules="ruleCustom" :label-width="80">
-      <Header class="header">登&nbsp;&nbsp;&nbsp;&nbsp;陆</Header>
+      <div class="header">登&nbsp;&nbsp;&nbsp;&nbsp;陆</div>
 
       <FormItem label="用户名" :label-width="80"  style="height: 40px;color:red"  label-for="name" prop="name">
         <Input v-model="loginForm.name" element-id="name" placeholder="请输入用户名"/>
@@ -39,13 +39,13 @@ export default {
         .login(this.loginForm.name, this.loginForm.password)
         .then(res => {
           let { data, headers } = res
-          if (data.code === 1) {
+          if (data.code === 10000) {
             window.loginStaus = true
             sessionStorage.setItem('loginStaus', true)
-            let AUTH_TOKEN = headers['x-auth-token']
-            window.axios.defaults.headers.common['x-auth-token'] = AUTH_TOKEN
+            // let AUTH_TOKEN = headers['x-auth-token']
+            // window.axios.defaults.headers.common['x-auth-token'] = AUTH_TOKEN
 
-            location.href = '/'
+            this.$router.push({name: 'index', params: {id: 1}});
           } else if (data.code === 0) {
             this.$Notice.error({
               title: '登录提示',
@@ -75,7 +75,9 @@ export default {
     'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   font-size: 30px;
   left: 50%;
-  margin: 0 0 30px 183px;
+  height: 70px;
+  line-height: 70px;
+  margin: 0 0 0 64px;
   color: #f7f7f7;
 }
 

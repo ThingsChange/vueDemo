@@ -10,14 +10,13 @@ import axios from 'axios'
 const login = {
   login: (name, pwd) => {
     // let loginInfo = Base64.encode(name + ':' + pwd)
-    let loginInfo = ''
     return axios({
       method: 'post',
-      url: `/kydc-zuul/login`,
+      url: `/qyTest/login`,
       headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        Authorization: 'Basic ' + loginInfo
-      }
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      data: {name, pwd}
     })
   }
 }
