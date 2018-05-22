@@ -79,6 +79,7 @@ export default {
   line-height: 70px;
   margin: 0 0 0 64px;
   color: #f7f7f7;
+  text-align: center;
 }
 
 .sql-query-table {

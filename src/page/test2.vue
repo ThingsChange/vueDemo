@@ -371,7 +371,7 @@
   }
 
   span.layout-hide-text {
-    display: none;
+    display: none;C
   }
   .layout-quit{
     float:right;

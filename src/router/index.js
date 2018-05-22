@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/pages/HelloWorld'
-let HelloWorld = r => require(['@/page/HelloWorld'], r);
-let Index = r => require(['@page/index'], r);
+// let HelloWorld = r => require(['@/page/HelloWorld'], r);
+let CrossOrigin = r => require(['@page/crossOrigin/index'], r);
 let Login = r => require(['@page/login'], r);
+let Layout = r => require(['@page/layout'], r);
 
 Vue.use(Router)
 
@@ -11,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Layout',
+      component: Layout
     },
     {
       path: '/Login',
@@ -20,9 +21,16 @@ export default new Router({
       component: Login
     },
     {
-      path: '/index/:id',
-      name: 'index',
-      component: Index
+      component: Layout,
+      path: '/crossOrigin',
+      name: 'Layout',
+      children: [{
+        path: '/',
+        component: CrossOrigin,
+        meta: {
+          name: '奖金录入'
+        }
+      }]
     }
   ]
 })

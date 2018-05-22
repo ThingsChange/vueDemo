@@ -29,6 +29,8 @@ module.exports = {
       "named": "ignore",
       "asyncArrow": "ignore"
     }],
+    "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }],
+    "vue/html-self-closing": "off",
     'no-console': ["error", { allow: ["warn", "error","log","group","groupEnd"] }],
 //Eslint总是推荐用ES6的字符串模板来拼接字符串，而不能用加号，此处关闭了
     'prefer-template': 'off',

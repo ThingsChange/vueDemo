@@ -1,43 +1,5 @@
 <template>
-  <div class="layout">
-    <Header>Header</Header>
     <Layout>
-      <Sider hide-trigger>
-        <Menu :theme="theme2" :open-names="['1']" accordion>
-        <Submenu name="1">
-          <template slot="title">
-            <Icon type="ios-paper"></Icon>
-            域的知识
-          </template>
-          <MenuItem name="1-1">跨域实现</MenuItem>
-          <MenuItem name="1-2">评论管理</MenuItem>
-          <MenuItem name="1-3">举报管理</MenuItem>
-        </Submenu>
-        <Submenu name="2">
-          <template slot="title">
-            <Icon type="ios-people"></Icon>
-            用户管理
-          </template>
-          <MenuItem name="2-1">新增用户</MenuItem>
-          <MenuItem name="2-2">活跃用户</MenuItem>
-        </Submenu>
-        <Submenu name="3">
-          <template slot="title">
-            <Icon type="stats-bars"></Icon>
-            统计分析
-          </template>
-          <MenuGroup title="使用">
-            <MenuItem name="3-1">新增和启动</MenuItem>
-            <MenuItem name="3-2">活跃分析</MenuItem>
-            <MenuItem name="3-3">时段分析</MenuItem>
-          </MenuGroup>
-          <MenuGroup title="留存">
-            <MenuItem name="3-4">用户留存</MenuItem>
-            <MenuItem name="3-5">流失用户</MenuItem>
-          </MenuGroup>
-        </Submenu>
-      </Menu>
-      </Sider>
       <Content>
         <Footer>Footer</Footer>
         <h1 :label="msg">{{msg}}</h1>
@@ -60,108 +22,12 @@
         </ul>
       </Content>
     </Layout>
-  </div>
 </template>
-<style scoped>
-  .layout {
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    height: 100%;
-  }
-
-  .row-height {
-    height: 100%;
-  }
-
-  .layout-breadcrumb {
-    padding: 10px 15px 0;
-  }
-
-  .layout-content {
-    min-height: 600px;
-    margin: 15px;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 4px;
-  }
-
-  .layout-content-main {
-    padding: 10px;
-  }
-
-  .layout-copy {
-    text-align: center;
-    padding: 10px 0 20px;
-    color: #9ea7b4;
-  }
-
-  .layout-menu-left {
-    background: #464c5b;
-  }
-
-  .header-button {
-    padding: 15px 15px;
-    float: right;
-  }
-
-  .layout-header {
-    height: 60px;
-    background: #fff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
-
-  .layout-logo-left {
-    width: 100px;
-    height: 100px;
-    /*background: #5b6270;*/
-    border-radius: 3px;
-    margin: 15px auto;
-    text-align: center;
-  }
-
-  .layout-logo-left p {
-    color: white;
-  }
-
-  .layout-logo-left img {
-    border-radius: 50%;
-  }
-
-  .layout-ceiling-main a {
-    color: #9ba7b5;
-  }
-
-  .layout-hide-text .layout-text {
-    display: none;
-  }
-
-  .ivu-col {
-    transition: width 0.2s ease-in-out;
-  }
-
-  .content-layout {
-    overflow-y: auto;
-  }
-
-  span.layout-hide-text {
-    display: none;
-  }
-  .layout-quit{
-    float:right;
-    line-height:60px;
-    margin-right:30px;
-    color:#9ba7b5;
-    font-weight:bolder;
-  }
-</style>
 
 <script>
 import { getList } from '@/common/commonConst'
-import { corsAPI } from './../api/index'
-
+import {routeConfig} from '@/config/menuRouter'
+import { corsAPI } from '@/api/index'
 export default {
   name: 'index',
   data() {
@@ -276,7 +142,106 @@ export default {
     console.log('%c%s', 'color: red', 'this.$data的值是', this.$data)
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
-    console.groupEnd()
+    console.groupEnd();
   }
 }
 </script>
+<style scoped>
+  .programImg{
+    width: 100%;
+    height: 100%;
+  }
+  .layout {
+    border: 1px solid #d7dde4;
+    background: #f5f7f9;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .row-height {
+    height: 100%;
+  }
+
+  .layout-breadcrumb {
+    padding: 10px 15px 0;
+  }
+
+  .layout-content {
+    min-height: 600px;
+    margin: 15px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  .layout-content-main {
+    padding: 10px;
+  }
+
+  .layout-copy {
+    text-align: center;
+    padding: 10px 0 20px;
+    color: #9ea7b4;
+  }
+
+  .layout-menu-left {
+    background: #464c5b;
+  }
+
+  .header-button {
+    padding: 15px 15px;
+    float: right;
+  }
+
+  .layout-header {
+    height: 60px;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .layout-logo-left {
+    width: 100px;
+    height: 100px;
+    /*background: #5b6270;*/
+    border-radius: 3px;
+    margin: 15px auto;
+    text-align: center;
+  }
+
+  .layout-logo-left p {
+    color: white;
+  }
+
+  .layout-logo-left img {
+    border-radius: 50%;
+  }
+
+  .layout-ceiling-main a {
+    color: #9ba7b5;
+  }
+
+  .layout-hide-text .layout-text {
+    display: none;
+  }
+
+  .ivu-col {
+    transition: width 0.2s ease-in-out;
+  }
+
+  .content-layout {
+    overflow-y: auto;
+  }
+
+  span.layout-hide-text {
+    display: none;
+  }
+  .layout-quit{
+    float:right;
+    line-height:60px;
+    margin-right:30px;
+    color:#9ba7b5;
+    font-weight:bolder;
+  }
+</style>
