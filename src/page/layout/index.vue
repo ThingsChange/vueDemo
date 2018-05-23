@@ -6,7 +6,8 @@
           <img class="programImg" src="@/assets/zhongzhi.jpg" alt="">
           <p>各种DEMO</p>
         </div>
-        <Menu @on-select="selectMenu" :active-name="AC" theme="dark" width="auto" accordion :open-names="onames" ref="menus">
+        <MenuSelf/>
+       <!-- <Menu @on-select="selectMenu" :active-name="AC" theme="dark" width="auto" accordion :open-names="onames" ref="menus">
           <Submenu name="1">
             <template slot="title">
               <Icon type="ios-paper"></Icon>
@@ -39,9 +40,9 @@
               <MenuItem name="3-5">流失用户</MenuItem>
             </MenuGroup>
           </Submenu>
-        </Menu>
+        </Menu>-->
       </Col>
-      <Col :span="spanRight" class="content-layout">
+      <Col :span="spanRight">
         <div class="layout-header">
           <Button type="text" @click="toggleClick" span="2">
             <Icon type="navicon" size="32"></Icon>
@@ -50,43 +51,14 @@
             退出登录
           </div>
         </div>
-        <transition name="fade" mode="out-in">
-          <router-view :key="$route.path+'/'+new Date()"></router-view>
-        </transition>
+        <router-view :key="$route.path+'/'+new Date()">
+         </router-view>
         <div class="layout-copy">
           2018 &copy;QY-NeedStudyHard
         </div>
       </Col>
 
     </Row>
-<!--    <Layout>
-&lt;!&ndash;      <Sider hide-trigger>
-        <Menu :theme="theme2" :open-names="['1']" accordion>
-
-      </Menu>
-      </Sider>&ndash;&gt;
-      <Content>
-        <Footer>Footer</Footer>
-        <h1 :label="msg">{{msg}}</h1>
-        <h1 v-text="studyList"></h1>
-        <button @click="refresh(1)" v-text="button1"></button>
-        <button @click="refresh(2)" v-text="button2"></button>
-        <button @click="refresh(3)" v-text="button3"></button>
-        <button @click="getDataNotSimple" v-text="button5"></button>
-        <button @click="getData" v-text="button4"></button>
-        <button @click="getDataBy$" v-text="button6"></button>
-        <button @click="nativeCrosDomain" v-text="button7"></button>
-        <button @click="postMessage" v-text="button8"></button>
-        <button @click="socketIo" v-text="button9"></button>
-        <router-view :key="$route.fullpath" v-text="button3"></router-view>
-        <router-link to="2" :key="$route.fullpath" >About</router-link>
-        <iframe  id="otherOrign" src="http://localhost:3000"></iframe>
-        <h1 v-text="whichOne"></h1>
-        <ul>
-          <li v-for="item in name" v-text="item" :key="item"></li>
-        </ul>
-      </Content>
-    </Layout>-->
   </div>
 </template>
 
@@ -201,6 +173,22 @@ export default {
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
     console.groupEnd()
+    const path = this.$route.path;
+    let submenu = '';
+    for (let key in routeConfig) {
+      if (routeConfig[key] === path) {
+        submenu = key;
+      }
+    }
+    this.AC = submenu;
+    let arr = [];
+    arr[0] = submenu[0];
+    this.onames = arr;
+    /* this.$nextTick(() => {
+      if (!this.$refs.length) return;// 未登录页面所改
+      this.$refs.menus.updateOpened();
+      this.$refs.menus.updateActiveName();
+    });*/
   },
   beforeMount() {
     console.group('beforeMount 挂载前状态===============》')
@@ -218,121 +206,6 @@ export default {
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
     console.groupEnd();
-    const path = this.$route.path;
-    let submenu = '';
-    for (let key in routeConfig) {
-      if (routeConfig[key] === path) {
-        submenu = key;
-      }
-    }
-    this.AC = submenu;
-    let arr = [];
-    arr[0] = submenu[0];
-    this.onames = arr;
-    this.$nextTick(() => {
-      if (!this.$refs.length) return;// 未登录页面所改
-      this.$refs.menus.updateOpened();
-      this.$refs.menus.updateActiveName();
-    });
   }
 }
 </script>
-<style scoped>
-  .programImg{
-    width: 80%;
-    height: 80%;
-  }
-  .layout {
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    height: 100%;
-  }
-
-  .row-height {
-    height: 100%;
-  }
-
-  .layout-breadcrumb {
-    padding: 10px 15px 0;
-  }
-
-  .layout-content {
-    min-height: 600px;
-    margin: 15px;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 4px;
-  }
-
-  .layout-content-main {
-    padding: 10px;
-  }
-
-  .layout-copy {
-    text-align: center;
-    padding: 10px 0 20px;
-    color: #9ea7b4;
-  }
-
-  .layout-menu-left {
-    background: #464c5b;
-  }
-
-  .header-button {
-    padding: 15px 15px;
-    float: right;
-  }
-
-  .layout-header {
-    height: 60px;
-    background: #fff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
-
-  .layout-logo-left {
-    width: 100px;
-    height: 100px;
-    /*background: #5b6270;*/
-    border-radius: 3px;
-    margin: 15px auto;
-    text-align: center;
-  }
-
-  .layout-logo-left p {
-    color: white;
-  }
-
-  .layout-logo-left img {
-    border-radius: 50%;
-  }
-
-  .layout-ceiling-main a {
-    color: #9ba7b5;
-  }
-
-  .layout-hide-text .layout-text {
-    display: none;
-  }
-
-  .ivu-col {
-    transition: width 0.2s ease-in-out;
-  }
-
-  .content-layout {
-    overflow-y: auto;
-  }
-
-  span.layout-hide-text {
-    display: none;
-  }
-  .layout-quit{
-    float:right;
-    line-height:60px;
-    margin-right:30px;
-    color:#9ba7b5;
-    font-weight:bolder;
-  }
-</style>

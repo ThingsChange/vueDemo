@@ -38,7 +38,7 @@ export default {
       loginAPI
         .login(this.loginForm.name, this.loginForm.password)
         .then(res => {
-          let { data, headers } = res
+          let { data } = res
           if (data.code === 10000) {
             window.loginStaus = true
             sessionStorage.setItem('loginStaus', true)

@@ -6,7 +6,11 @@ import iview from 'iview'
 import 'iview/dist/styles/iview.css';
 import router from './router'
 import axios from './common/axiosConfig'
+import bread from './components/bread'
+import menu from './components/menu'
 
+Vue.component('Bread', bread);
+Vue.component('MenuSelf', menu);
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 Vue.prototype.$axios = axios

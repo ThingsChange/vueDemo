@@ -1,12 +1,9 @@
+/* eslint-disable */
 import * as THREE from 'three'
 
-var SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50
-var container
-var camera, scene, renderer
-var particles, particle, count = 0
-
-var mouseX = 0, mouseY = -253
-
+let SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50, particles, particle, count = 0, mouseX = 0, mouseY = -253
+let container, camera, scene, renderer
+// let particles, particle, count = 0
 var windowHalfX = window.innerWidth / 2
 var windowHalfY = window.innerHeight / 2
 
@@ -23,7 +20,7 @@ function init () {
 
   scene = new THREE.Scene()
 
-  particles = new Array()
+  particles = [];
 
   var PI2 = Math.PI * 2
   var material = new THREE.SpriteMaterial({

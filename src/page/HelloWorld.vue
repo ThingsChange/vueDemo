@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <Bread></Bread>
     <h2>{{ msg }}</h2>
     <ul>
       <li @click="goToIndex">点我去首页</li>

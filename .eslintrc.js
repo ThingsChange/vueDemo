@@ -29,6 +29,8 @@ module.exports = {
       "named": "ignore",
       "asyncArrow": "ignore"
     }],
+   "one-var":[0,"always"],
+  "no-unused-vars": [1, { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
     "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }],
     "vue/html-self-closing": "off",
     'no-console': ["error", { allow: ["warn", "error","log","group","groupEnd"] }],
@@ -51,12 +53,12 @@ module.exports = {
     'no-param-reassign': [
       'error',
       {
-        props: true,
-        ignorePropertyModificationsFor: [
+        props: false
+       /* ignorePropertyModificationsFor: [
           'state', // for vuex state
           'acc', // for reduce accumulators
           'e', // for e.returnvalue
-        ],
+        ],*/
       },
     ],
     // allow optionalDependencies

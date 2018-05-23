@@ -14,7 +14,7 @@ let cb = (...data) => {
   console.log(data, '我是回调')
 }
 window.cb = cb
-console.log(cb)
+// console.log(cb)
 let corsAPI = {
   getCorsData() {
     return axios({
