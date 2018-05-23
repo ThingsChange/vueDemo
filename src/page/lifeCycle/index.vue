@@ -8,6 +8,10 @@
             <Col>
               1
             </Col>
+            <Col>
+            {{programModifyTimes}}
+            </Col>
+            <button @click="addPMT">点我</button>
           </Row>
         </content>
       </div>
@@ -17,8 +21,27 @@
 </template>
 
 <script>
-export default {
-  name: 'index'
+  import { mapState, mapMutations, mapActions } from 'vuex'
+
+  export default {
+  name: 'index',
+  data () {
+    return {
+      age: 1
+    }
+  },
+  computed:{
+    ...mapState({
+      programModifyTimes: 'modifyTimes',
+    }),
+  },
+  methods:{
+    ...mapActions(['increaseModifyTimes']),
+    addPMT(){
+      console.log(123,this.$store);
+      this.increaseModifyTimes(2);
+    }
+  }
 }
 </script>
 

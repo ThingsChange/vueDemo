@@ -13,7 +13,7 @@ module.exports = {
   extends: ['plugin:vue/essential', 'standard'],
   // extends: ['plugin:vue/essential', 'airbnb-base','standard'],
   // required to lint *.vue files
-  plugins: ['vue'],
+  plugins: ['vue','html'],
   // check if imports actually resolve
 /*  settings: {
     'import/resolver': {
