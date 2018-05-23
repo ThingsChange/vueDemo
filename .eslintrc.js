@@ -15,13 +15,13 @@ module.exports = {
   // required to lint *.vue files
   plugins: ['vue'],
   // check if imports actually resolve
-  settings: {
+/*  settings: {
     'import/resolver': {
       webpack: {
         config: 'build/webpack.base.conf.js',
       },
     },
-  },
+  },*/
   // add your custom rules here
   rules: {
     "space-before-function-paren":  ["error", {

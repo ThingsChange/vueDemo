@@ -23,9 +23,10 @@ export default {
       routeConfig: routeConfig
     }
   },
+  props: ['menuShow'],
   computed: {
     expandLeft() {
-      return this.spanLeft < 3
+      return !this.menuShow;
     }
   },
   methods: {
@@ -47,21 +48,24 @@ export default {
   },
   created() {
     const path = this.$route.path;
+    console.log(this.$route);
     let submenu = '';
-    for (let key in routeConfig) {
-      if (routeConfig[key] === path) {
-        submenu = key;
-      }
+    for (let key of routeConfig) {
+      key.child.forEach(v => {
+        if (v.path === path) {
+          submenu = v.id
+        }
+      })
     }
     this.AC = submenu;
     let arr = [];
     arr[0] = submenu[0];
     this.onames = arr;
     /* this.$nextTick(() => {
-  if (!this.$refs.length) return;// 未登录页面所改
-  this.$refs.menus.updateOpened();
-  this.$refs.menus.updateActiveName();
-});*/
+      if (!this.$refs.length) return;// 未登录页面所改
+      this.$refs.menus.updateOpened();
+      this.$refs.menus.updateActiveName();
+    });*/
   }
 }
 </script>

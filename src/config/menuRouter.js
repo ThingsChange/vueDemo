@@ -14,7 +14,7 @@
 }*/
 export const routeConfig = [
   {id: '1',
-    path: '/crossOrigin',
+    path: '/',
     text: '域的知识',
     child: [
       {id: '1-1', path: '/crossOrigin', text: '跨域实现'},

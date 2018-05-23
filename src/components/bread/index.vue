@@ -29,7 +29,6 @@ export default {
     }
   },
   created () {
-    debugger;
     console.log(123);
     this.breads = this._getBreads()
   }

@@ -1,14 +1,21 @@
 <template>
   <div class="hello">
     <Bread></Bread>
-    <h2>{{ msg }}</h2>
-    <ul>
-      <li @click="goToIndex">点我去首页</li>
-    </ul>
+    <div class='layout-content'>
+      <div class='layout-content-main'>
+        <content>
+          <h2>{{ msg }}</h2>
+          <ul>
+            <li @click="goToIndex">点我去首页</li>
+          </ul></content>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'HelloWorld',
   data() {
