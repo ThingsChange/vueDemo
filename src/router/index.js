@@ -5,7 +5,8 @@ let HelloWorld = r => require(['@/page/HelloWorld'], r);
 let CrossOrigin = r => require(['@page/crossOrigin/index'], r);
 let Login = r => require(['@page/login'], r);
 let Layout = r => require(['@page/layout'], r);
-let LifeCycle = r => require(['@page/lifeCycle'], r);
+let LifeCycle = r => require(['@page/vuePage/lifeCycle'], r);
+let ComponentCommunicate = r => require(['@page/vuePage/componentCommunicate'], r);
 
 Vue.use(Router)
 
@@ -70,7 +71,16 @@ export default new Router({
           name: 'vue生命周期'
         },
         component: LifeCycle
-      }]
+      },
+      {
+        path: '/componentCommunicate',
+        name: '组件通信',
+        meta: {
+          name: '组件通信'
+        },
+        component: ComponentCommunicate
+      }
+      ]
     }
   ]
 })

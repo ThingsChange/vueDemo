@@ -4,6 +4,6 @@
  *  note : 描述作用
  */
 let state = {
-  modifyTimes: '100'
+  modifyTimes: 100
 }
 export default state;

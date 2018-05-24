@@ -6,6 +6,13 @@
       <Content>
         <h1 :label="msg">{{msg}}</h1>
         <h1 v-text="studyList"></h1>
+        <Row>
+          <Col>
+            <label>这里是从vuex中取到的值</label><span v-text="modifyTimes"></span>
+            <label>这里是从bus中传来的的值:</label><span style="color:red" v-text="busMsg"></span>
+          </Col>
+        </Row>
+
         <button @click="refresh(1)" v-text="button1"></button>
         <button @click="refresh(2)" v-text="button2"></button>
         <button @click="refresh(3)" v-text="button3"></button>
@@ -30,12 +37,14 @@
 
 <script>
 import { getList } from '@/common/commonConst'
-// import {routeConfig} from '@/config/menuRouter'
+import { mapState, mapMutations, mapActions } from 'vuex'
+
 import { corsAPI } from '@/api/index'
 export default {
   name: 'index',
   data() {
     return {
+      busMsg:'busTest原始值',
       theme2: 'dark',
       msg: '我是首页',
       studyList: '生命周期',
@@ -57,7 +66,10 @@ export default {
     whichOne() {
       console.log(this.$route.matched)
       return this.$route.params.id
-    }
+    },
+    ...mapState({
+      modifyTimes:'modifyTimes'
+    })
   },
   /*  watch: {
     '$route' (to, from) {
@@ -113,6 +125,15 @@ export default {
       const urlStrArr = urlStr.split('/')
       return urlStrArr[urlStrArr.length - 1]
     }
+  },
+  created(){
+    console.log('他么的不进来吗');
+    debugger;
+    let that=this;
+    this.$root.bus.$on('busTest',t=>{
+      debugger;
+      that.busMsg+=t;
+    })
   }
   /* beforeCreate() {
     console.group('beforeCreate创建前的状态')

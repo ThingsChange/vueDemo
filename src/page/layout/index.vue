@@ -127,14 +127,14 @@ export default {
       location.reload()
     }
   },
-  beforeCreate() {
+  /*beforeCreate() {
     console.group('beforeCreate创建前的状态')
     console.log(this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是', this.$data)
     console.log('%c%s', 'color: red', `this.$el的值是${this.$el}`)
     console.log('%c%s', 'color: red', `this.$data的值是 ${this.$data}`)
     console.groupEnd()
-  },
+  },*/
   created() {
     console.log(this.getStatus(this.$route.path))
     console.group('created创建后的状态')
@@ -160,7 +160,7 @@ export default {
       this.$refs.menus.updateActiveName();
     });*/
   },
-  beforeMount() {
+ /* beforeMount() {
     console.group('beforeMount 挂载前状态===============》')
     console.log('%c%s', 'color:red', 'el     : ' + this.$el) // 已被初始化
     console.log(this.$el)
@@ -176,6 +176,6 @@ export default {
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
     console.groupEnd();
-  }
+  }*/
 }
 </script>
