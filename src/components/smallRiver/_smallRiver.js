@@ -13,7 +13,11 @@ export default {
     }
   },
   props: {
-    disCharge: [String, Number]
+    disCharge: [String, Number],
+    students: {
+      type: Array,
+      required: true
+    }
   },
   methods: {
     askForWater(item) {

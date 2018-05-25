@@ -39,7 +39,33 @@
               </Row>
               <Row>
                 <Col span="12">
-                  <small-river ref="river" :dis-charge="smallDisCharge" @waterToggle="waterToggle"></small-river>
+                  <small-river ref="river" :dis-charge="smallDisCharge" @waterToggle="waterToggle" :students="students">
+                    <h1>不具名插槽</h1>
+                    <button slot="button" @click="adjustSmallDisCharge(3)">这是slot在父元素生成的button,作用是关水</button>
+                    <button slot="button" @click="adjustSmallDisCharge(4)">这是slot在父元素生成的button,作用是暂停</button>
+                    <template slot="slotScopeTest" scope="props">
+                      <li>{{props.text2}}</li>
+                    </template>
+                    <template slot="slotScopeTest" scope="props">
+                      <button>{{props.text2}}</button>
+                    </template>
+                  </small-river>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <RadioGroup v-model="changeTab" type="button">
+                    <Radio label="北京"></Radio>
+                    <Radio label="上海"></Radio>
+                    <Radio label="深圳"></Radio>
+                  </RadioGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                 <keep-alive>
+                   <component v-bind:is="tabView"></component>
+                 </keep-alive>
                 </Col>
               </Row>
             </div>
@@ -51,34 +77,72 @@
 
 <script>
   import  SmallRiver from  '@/components/smallRiver'
+  import  test1 from '@/components/isKeepAlive/test1'
+  import  test2 from '@/components/isKeepAlive/test2'
+  import  test3 from '@/components/isKeepAlive/test3'
     export default {
         name: "index",
       data(){
           return{
-          riverLength:3000,
-          riverWidth:128,
-          bigDisChage:888,
-          smallDisCharge:333,
+              timer:null,
+              riverLength:3000,
+              riverWidth:128,
+              bigDisChage:888,
+              smallDisCharge:333,
+              students:[
+                  {name:'小A'},
+                  {name:'小B'},
+                  {name:'小C'},
+              ],
+            tabView:'test1',
+            changeTab:'北京'
           }
       },
+      watch:{
+        changeTab(newVal,oldVal){
+          switch (newVal){
+            case '北京':
+              this.tabView='test1';
+              break;
+            case '上海':
+              this.tabView='test2';
+              break;
+              break;
+            case '深圳':
+              this.tabView='test3';
+              break;
+            default:
+              this.tabView='test1';
+              break ;
+          }
+        }
+      },
       components:{
-        'small-river':SmallRiver
+        'small-river':SmallRiver,
+        'test1':test1,
+        'test2':test2,
+        'test3':test3,
       },
       methods:{
         adjustSmallDisCharge(type){
           let that=this;
-          let timer=setInterval(()=>{
+          if(type===3){
+            clearInterval(that.timer);
+            that.timer=null;
+            return false;
+          }
+          this.timer=setInterval(()=>{
               if(type==1){
                 if(that.smallDisCharge>=500){
-                  clearInterval(timer);
-                  timer=null;
+                  clearInterval(that.timer);
+                  that.timer=null;
                   return ;
                 }
                 that.smallDisCharge++;
               }else{
                 if(that.smallDisCharge<=0){
-                  clearInterval(timer);
-                  timer=null;
+                  clearInterval(that.timer);
+                  that.timer=null;
                   return ;
                 }
                 that.smallDisCharge--;

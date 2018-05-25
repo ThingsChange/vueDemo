@@ -28,4 +28,9 @@
       </div>
       </Col>
     </Row>
+  <slot name="button"></slot>
+  <div>
+    <p>这里进行slot作为作用域的测试</p>
+    <slot name="slotScopeTest" v-for="student in students" :text2="student.name" ></slot>
+  </div>
 </content>
