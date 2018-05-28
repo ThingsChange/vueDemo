@@ -27,6 +27,7 @@ export const routeConfig = [
     text: 'vue测试',
     child: [
       {id: '2-1', path: '/lifeCycle', text: '生命周期'},
-      {id: '2-2', path: '/componentCommunicate', text: '组件通信'}
+      {id: '2-2', path: '/componentCommunicate', text: '组件通信'},
+      {id: '2-3', path: '/objectTest', text: '引用数据类型'},
     ]}
 ]
