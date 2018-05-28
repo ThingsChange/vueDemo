@@ -136,13 +136,13 @@ export default {
     console.groupEnd()
   },*/
   created() {
-    console.log(this.getStatus(this.$route.path))
+/*    console.log(this.getStatus(this.$route.path))
     console.group('created创建后的状态')
     console.log(this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是', this.$data)
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
-    console.groupEnd()
+    console.groupEnd()*/
     const path = this.$route.path;
     let submenu = '';
     for (let key in routeConfig) {

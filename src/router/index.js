@@ -6,6 +6,7 @@ let CrossOrigin = r => require(['@page/crossOrigin/index'], r);
 let Login = r => require(['@page/login'], r);
 let Layout = r => require(['@page/layout'], r);
 let LifeCycle = r => require(['@page/vuePage/lifeCycle'], r);
+let vuexTest = r => require(['@page/vuePage/vueX'], r);
 let ObjectTest = r => require(['@page/vuePage/objectTest'], r);
 let ComponentCommunicate = r => require(['@page/vuePage/componentCommunicate'], r);
 
@@ -88,6 +89,14 @@ export default new Router({
           name: '引用数据类型'
         },
         component: ObjectTest
+      },
+      {
+        path: '/vuexTest',
+        name: 'VUEX值得存储',
+        meta: {
+          name: 'VUEX值得存储'
+        },
+        component: vuexTest
       }
       ]
     }
