@@ -5,13 +5,6 @@
  * @note 一二级导航对应的路由地址
  **/
 
-/* export const routeConfig = {
-  '1-1': '/crossOrigin',
-  '1-2': '',
-  '1-3': '/welcome',
-  '2': '/vueTest',
-  '2-1': '/lifeCycle'
-}*/
 export const routeConfig = [
   {id: '1',
     path: '/',
@@ -29,5 +22,6 @@ export const routeConfig = [
       {id: '2-1', path: '/lifeCycle', text: '生命周期'},
       {id: '2-2', path: '/componentCommunicate', text: '组件通信'},
       {id: '2-3', path: '/objectTest', text: '引用数据类型'},
+      {id: '2-4', path: '/routerTest', text: '路由导航守卫测试'}
     ]}
 ]

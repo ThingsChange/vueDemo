@@ -6,12 +6,12 @@ let CrossOrigin = r => require(['@page/crossOrigin/index'], r);
 let Login = r => require(['@page/login'], r);
 let Layout = r => require(['@page/layout'], r);
 let LifeCycle = r => require(['@page/vuePage/lifeCycle'], r);
+let RouterTest = r => require(['@page/vuePage/routerTest'], r);
 let ObjectTest = r => require(['@page/vuePage/objectTest'], r);
 let ComponentCommunicate = r => require(['@page/vuePage/componentCommunicate'], r);
 
 Vue.use(Router)
-
-export default new Router({
+let routerList = new Router({
   routes: [
     {
       path: '/',
@@ -88,8 +88,25 @@ export default new Router({
           name: '引用数据类型'
         },
         component: ObjectTest
+      },
+      {
+        path: '/routerTest',
+        name: '路由导航守卫测试',
+        meta: {
+          name: '路由导航守卫测试'
+        },
+        component: RouterTest,
+        beforeEnter(to, from, next) {
+          console.group('路由守卫测试：这里是beforeEnter')
+          console.log(to, from, next);
+        }
       }
       ]
     }
   ]
 })
+routerList.beforeEach((to, from, next) => {
+  console.log('路由守卫测试：这里是beforeEach')
+  next();
+})
+export default routerList;

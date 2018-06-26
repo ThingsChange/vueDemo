@@ -17,10 +17,15 @@ export default {
     students: {
       type: Array,
       required: true
+    },
+    teachers: {
+      type: Array,
+      required: true
     }
   },
   methods: {
     askForWater(item) {
+      // console.log(this.$event);
       console.log('这里干嘛的', item);
       this.$emit('waterToggle', item);
     }

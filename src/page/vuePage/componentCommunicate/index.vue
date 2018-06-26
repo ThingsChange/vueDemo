@@ -15,6 +15,7 @@
                   <Col>
                     <Button @click="adjustSmallDisCharge(1)">大河有水小河满</Button>
                     <Button @click="adjustSmallDisCharge(2)">大河没水小河干</Button>
+                    <Button @click="deleteArray">删除数组</Button>
                   </Col>
                 </Row>
               <Row  :gutter="10">
@@ -39,7 +40,7 @@
               </Row>
               <Row>
                 <Col span="12">
-                  <small-river ref="river" :dis-charge="smallDisCharge" @waterToggle="waterToggle" :students="students">
+                  <small-river ref="river" :dis-charge="smallDisCharge" @waterToggle="waterToggle" :students="students" :teachers="teachers">
                     <h1>不具名插槽</h1>
                     <button slot="button" @click="adjustSmallDisCharge(3)">这是slot在父元素生成的button,作用是关水</button>
                     <button slot="button" @click="adjustSmallDisCharge(4)">这是slot在父元素生成的button,作用是暂停</button>
@@ -48,6 +49,13 @@
                     </template>
                     <template slot="slotScopeTest" scope="props">
                       <button>{{props.text2}}</button>
+                    </template>
+
+                    <template slot="slotScopeSelf" scope="props">
+                      <ul>
+                        <li  v-text="props.teacher"></li>
+                      </ul>
+                      <span></span>
                     </template>
                   </small-river>
                 </Col>
@@ -94,6 +102,7 @@
                   {name:'小B'},
                   {name:'小C'},
               ],
+            teachers:[],
             tabView:'test1',
             changeTab:'北京'
           }
@@ -123,10 +132,31 @@
         'test2':test2,
         'test3':test3,
       },
+      created(){
+        this.teachers=[
+          {name:'小A老师'},
+          {name:'小B老师'},
+          {name:'小C老师'},
+        ];
+        this.students.length=1;
+      },
       methods:{
         adjustSmallDisCharge(type){
+          this.students.length=2;
+          this.students[1]=   {name:'小D'};
+          this.students[2]=   {name:'小f'};
+
+          this.teachers.map(v=>{
+            console.log(v.name);
+          })
+
           let that=this;
           if(type===3){
+            clearInterval(that.timer);
+            that.timer=null;
+            return false;
+          }
+          if(type===4){
             clearInterval(that.timer);
             that.timer=null;
             return false;
@@ -148,6 +178,9 @@
                 that.smallDisCharge--;
               }
             },200)
+        },
+        deleteArray(){
+          this.students.length=1;
         },
         waterToggle(item){
           console.log('到底是防水吗');
