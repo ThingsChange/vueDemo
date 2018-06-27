@@ -108,6 +108,7 @@ let routerList = new Router({
         beforeEnter(to, from, next) {
           console.group('路由守卫测试：这里是beforeEnter')
           console.log(to, from, next);
+          next();
         }
       }
       ]
