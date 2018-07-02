@@ -99,14 +99,15 @@ let routerList = new Router({
         component: vuexTest
       },
       {
-        path: '/routerTest',
+        path: '/routerTest/:id',
         name: '路由导航守卫测试',
         meta: {
           name: '路由导航守卫测试'
         },
         component: RouterTest,
         beforeEnter(to, from, next) {
-          console.group('路由守卫测试：这里是beforeEnter')
+          sessionStorage.setItem('nowIndex', +sessionStorage.getItem('nowIndex') + 1)
+          console.group('路由守卫测试：这里是beforeEnter', sessionStorage.getItem('nowIndex'));
           console.log(to, from, next);
           next();
         }
@@ -116,7 +117,9 @@ let routerList = new Router({
   ]
 })
 routerList.beforeEach((to, from, next) => {
-  console.log('路由守卫测试：这里是beforeEach')
+  sessionStorage.setItem('nowIndex', 1)
+  document.title = to.meta.name || to.pathName;
+  console.log('路由守卫测试：这里是beforeEach', sessionStorage.getItem('nowIndex'))
   next();
 })
 export default routerList;

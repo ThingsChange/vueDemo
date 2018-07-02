@@ -5,7 +5,7 @@
  * @PROJECT_NAME vueDemo
  * @note 请阐述当前文件的作用
  **/
-import axios from '@/common/axiosConfig'
+import axios from './../../common/axiosConfig'
 import $ from 'jquery'
 import io from 'socket.io-client'
 

@@ -160,7 +160,7 @@ export default {
       this.$refs.menus.updateActiveName();
     });*/
   },
- /* beforeMount() {
+  beforeMount() {
     console.group('beforeMount 挂载前状态===============》')
     console.log('%c%s', 'color:red', 'el     : ' + this.$el) // 已被初始化
     console.log(this.$el)
@@ -168,7 +168,7 @@ export default {
     console.log('%c%s', 'color:red', 'message: ' + this.message) // 已被初始化
     console.groupEnd()
   },
-  mounted() {
+/*  mounted() {
     console.log(this.$route)
     console.group('mounted挂载完毕之后的状态')
     console.log(this.$el)
