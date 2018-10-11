@@ -10,12 +10,17 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/qyTest':{
+      /*'/qyTest':{
         target:'http://localhost:3000',
+
          changeOrigin:true,
         pathRewrite:{
           '^/qyTest':''
         }
+      },*/
+      '/qyTest':{
+        target:'https://easy-mock.com/mock/5b8785169da5b94e1e89f18f/example',
+         changeOrigin:true,
       }
     },
 

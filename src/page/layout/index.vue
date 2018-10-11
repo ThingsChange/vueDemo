@@ -136,13 +136,14 @@ export default {
     console.groupEnd()
   },*/
   created() {
-/*    console.log(this.getStatus(this.$route.path))
-    console.group('created创建后的状态')
+    console.log('*******************************************************');
+    console.log(this.getStatus(this.$route.path))
+    console.group('created创建后的状态11111111111111111')
     console.log(this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是', this.$data)
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
-    console.groupEnd()*/
+    console.groupEnd()
     const path = this.$route.path;
     let submenu = '';
     for (let key in routeConfig) {
@@ -161,21 +162,21 @@ export default {
     });*/
   },
   beforeMount() {
-    console.group('beforeMount 挂载前状态===============》')
+    console.group('beforeMount 挂载前状态111111111111111===============》')
     console.log('%c%s', 'color:red', 'el     : ' + this.$el) // 已被初始化
     console.log(this.$el)
     console.log('%c%s', 'color:red', 'data   : ' + this.$data) // 已被初始化
     console.log('%c%s', 'color:red', 'message: ' + this.message) // 已被初始化
     console.groupEnd()
   },
-/*  mounted() {
+  mounted() {
     console.log(this.$route)
-    console.group('mounted挂载完毕之后的状态')
+    console.group('mounted挂载完毕之后的状态11111111111111111111')
     console.log(this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是', this.$data)
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
     console.groupEnd();
-  }*/
+  }
 }
 </script>

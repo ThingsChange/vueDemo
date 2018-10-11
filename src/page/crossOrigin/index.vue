@@ -128,10 +128,10 @@ export default {
   },
   created(){
     console.log('他么的不进来吗');
-    debugger;
+    // debugger;
     let that=this;
     this.$root.bus.$on('busTest',t=>{
-      debugger;
+      // debugger;
       that.busMsg+=t;
     })
   }

@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
+import {sync} from 'vuex-router-sync'
 import iview from 'iview'
 import 'iview/dist/styles/iview.css';
 import router from './router'
@@ -25,13 +26,26 @@ Vue.use(iview);
     next('login')
   }
 })*/
+// Vue 2.20++可用
+Vue.config.errorHandler = function (err, vm, info) {
+  // handler error
+  // info 是Vue特定的错误信息，比如错误所在的生命周期钩子
+
+}
+sync(store, router)
+
 new Vue({
   el: '#app',
   router,
   store,
   components: {App},
   template: '<App/>',
+  /*  render: function() {
+    throw new Error('error')
+  },*/
   data: {
     bus: new Vue()
   }
 })
+
+// export { router, store }

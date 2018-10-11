@@ -118,5 +118,6 @@ export default {
     margin-right:30px;
     color:#9ba7b5;
     font-weight:bolder;
+    cursor:pointer;
   }
 </style>
