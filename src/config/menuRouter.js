@@ -21,8 +21,9 @@ export const routeConfig = [
     child: [
       {id: '2-1', path: '/lifeCycle', text: '生命周期'},
       {id: '2-2', path: '/componentCommunicate', text: '组件通信'},
-      {id: '2-3', path: '/objectTest', text: '引用数据类型'},
-      {id: '2-4', path: '/vuexTest', text: 'VUEX值得存储'},
-      {id: '2-5', path: '/routerTest', text: '路由导航守卫测试'}
+      {id: '2-3', path: '/parentToChild', text: '父子组件通信'},
+      {id: '2-4', path: '/objectTest', text: '引用数据类型'},
+      {id: '2-5', path: '/vuexTest', text: 'VUEX值得存储'},
+      {id: '2-6', path: '/routerTest', text: '路由导航守卫测试'}
     ]}
 ]

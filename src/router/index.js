@@ -10,6 +10,7 @@ let vuexTest = r => require(['@page/vuePage/vueX'], r);
 let RouterTest = r => require(['@page/vuePage/routerTest'], r);
 let ObjectTest = r => require(['@page/vuePage/objectTest'], r);
 let ComponentCommunicate = r => require(['@page/vuePage/componentCommunicate'], r);
+let ParentToChild = r => require(['@page/vuePage/componentCommunicate/parentToChild'], r);
 
 Vue.use(Router)
 let routerList = new Router({
@@ -51,6 +52,14 @@ let routerList = new Router({
       component: Login
     },
     {
+      path: '/abc',
+      name: '欢迎页2',
+      component: HelloWorld,
+      meta: {
+        name: '欢迎页'
+      }
+    },
+    {
       component: Layout,
       path: '/',
       name: 'Layout',
@@ -81,6 +90,14 @@ let routerList = new Router({
           name: '组件通信'
         },
         component: ComponentCommunicate
+      },
+      {
+        path: '/parentToChild',
+        name: '父子组件通信',
+        meta: {
+          name: '组件通信'
+        },
+        component: ParentToChild
       },
       {
         path: '/objectTest',
