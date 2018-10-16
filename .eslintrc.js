@@ -8,11 +8,7 @@ module.exports = {
   env: {
     browser: true,
   },
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
   extends: ['plugin:vue/essential', 'standard'],
-  // extends: ['plugin:vue/essential', 'airbnb-base','standard'],
-  // required to lint *.vue files
   plugins: ['vue','html'],
   // check if imports actually resolve
 /*  settings: {
@@ -54,11 +50,6 @@ module.exports = {
       'error',
       {
         props: false
-       /* ignorePropertyModificationsFor: [
-          'state', // for vuex state
-          'acc', // for reduce accumulators
-          'e', // for e.returnvalue
-        ],*/
       },
     ],
     // allow optionalDependencies

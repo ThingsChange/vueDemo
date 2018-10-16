@@ -51,6 +51,14 @@ let routerList = new Router({
       component: Login
     },
     {
+      path: '/abc',
+      name: '欢迎页2',
+      component: HelloWorld,
+      meta: {
+        name: '欢迎页'
+      }
+    },
+    {
       component: Layout,
       path: '/',
       name: 'Layout',
