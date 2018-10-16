@@ -44,7 +44,7 @@
           this.c_sex=this.sex;
         }
       },
-      parentInfo:{
+      parentInfo:{//此乃推荐写法，父组件变更数据，子组件可以收到，子组件变更不影响父组件
         deep:true,
         handler:function(newVal){
           this.fromParent=JSON.parse(JSON.stringify(newVal));
