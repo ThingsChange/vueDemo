@@ -13,6 +13,7 @@
         <div>
           <label>小河水的流量：</label>
           <span v-text="disCharge"></span>
+          子组件：<input type="text" v-model="disCharge">
         </div>
       </Col>
       <Col span="6">
@@ -31,9 +32,11 @@
   <slot name="button"></slot>
   <div>
     <p>这里进行slot作为作用域的测试</p>
-    <slot name="slotScopeTest" v-for="student in students" :text2="student.name" ></slot>
+    <slot name="slotScopeTest" v-for="student in students" :text2="student.name" >
+    </slot>
     <p>这里是给自定义组件预留出来自定义渲染的地方，可根据父组件的模板进行渲染，子组件预留solt,父组件调用对应的solt模板就成 </p>
-    <slot name="slotScopeSelf" v-for ="teacher in teachers" :teacher="teacher.name"></slot>
+    <slot name="slotScopeSelf" v-for ="teacher in teachers" :teacher="teacher.name">
+    </slot>
   </div>
 
 </content>

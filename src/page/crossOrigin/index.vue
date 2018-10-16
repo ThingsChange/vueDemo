@@ -131,7 +131,7 @@ export default {
     // debugger;
     let that=this;
     this.$root.bus.$on('busTest',t=>{
-      // debugger;
+      debugger;
       that.busMsg+=t;
     })
   }

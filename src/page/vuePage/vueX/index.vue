@@ -64,8 +64,7 @@
     }
   },
     created(){
-// debugger;
-      console.log('here','asfdafafasf')
+      console.log('vuex 的created的周期函数')
       function isPrime(element, index, array) {
         var start = 2;
         while (start <= Math.sqrt(element)) {
@@ -97,8 +96,10 @@
         return 1;
       }
       this.firstSushu=this.shujujiegou.find(isPrimeBetter);
+    },
+    mounted(){
+      console.log('vuex 的mounted的周期函数')
     }
-
   }
 </script>
 

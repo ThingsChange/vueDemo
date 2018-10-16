@@ -45,15 +45,15 @@
                     <button slot="button" @click="adjustSmallDisCharge(3)">这是slot在父元素生成的button,作用是关水</button>
                     <button slot="button" @click="adjustSmallDisCharge(4)">这是slot在父元素生成的button,作用是暂停</button>
                     <template slot="slotScopeTest" scope="props">
-                      <li>{{props.text2}}</li>
+                      <li class="abc">{{props.text2}}</li>
                     </template>
                     <template slot="slotScopeTest" scope="props">
-                      <button>{{props.text2}}</button>
+                      <button class="bc-green">{{props.text2}}</button>
                     </template>
 
                     <template slot="slotScopeSelf" scope="props">
                       <ul>
-                        <li  v-text="props.teacher"></li>
+                        <li  class="bc-red" v-text="props.teacher"></li>
                       </ul>
                       <span></span>
                     </template>
@@ -191,5 +191,10 @@
 </script>
 
 <style scoped>
-
+.bc-green{
+  background: rgba(32, 195, 47, .5)
+}
+.bc-red{
+  background: rgba(255, 0, 0, .5)
+}
 </style>

@@ -2,12 +2,16 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App.vue'
-import store from './store'
+// import store from './store'
+import store from './vuex'
 import {sync} from 'vuex-router-sync'
 import iview from 'iview'
 import 'iview/dist/styles/iview.css';
 import router from './router'
 import axios from './common/axiosConfig'
+// 注册全局组件
+import './components/SvgIcon/registerSvg'
+
 // eslint-disable-next-line
 import bread from './components/bread'
 // eslint-disable-next-line
@@ -27,11 +31,11 @@ Vue.use(iview);
   }
 })*/
 // Vue 2.20++可用
-Vue.config.errorHandler = function (err, vm, info) {
+/* Vue.config.errorHandler = function (err, vm, info) {
   // handler error
   // info 是Vue特定的错误信息，比如错误所在的生命周期钩子
 
-}
+}*/
 sync(store, router)
 
 new Vue({

@@ -3,6 +3,16 @@
       <div class='layout-content'>
         <div class='layout-content-main'>
           <Content>
+            <div class="app">
+              <div ref="msgDiv">{{msg}}</div>
+              <div v-if="msg1">Message got outside $nextTick: {{msg1}}</div>
+              <div v-if="msg2">Message got inside $nextTick: {{msg2}}</div>
+              <div v-if="msg3">Message got outside $nextTick: {{msg3}}</div>
+              <button @click="changeMsg">
+                Change the Message
+              </button>
+            </div>
+
             <p>
               <i-input v-model="value14" placeholder="Enter something..." @on-click="guess"  icon="close-circled" clearable style="width: 200px"></i-input>
               <span>这是测试路由守卫的页面</span>
@@ -73,9 +83,23 @@
           return {
             id:0,
             value14: 'Hello World',
+
+            msg: 'Hello Vue.',
+            msg1: '',
+            msg2: '',
+            msg3: ''
+
           }
       },
       methods:{
+        changeMsg() {
+          this.msg = "Hello world."
+          this.msg1 = this.$refs.msgDiv.innerHTML
+          this.$nextTick(() => {
+            this.msg2 = this.$refs.msgDiv.innerHTML
+          })
+          this.msg3 = this.$refs.msgDiv.innerHTML
+        },
         guess(){
           console.log('我就是点击方法')
         },
@@ -130,24 +154,15 @@
       console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
       console.groupEnd()
     },
-      beforeRouteEnter(to,from,next){
+     /* beforeRouteEnter(to,from,next){
         sessionStorage.setItem('nowIndex',+sessionStorage.getItem('nowIndex')+1)
         console.group('路由守卫测试：这里是beforeRouteEnter',sessionStorage.getItem('nowIndex'));
         console.log('beforeRouterEnter的执行顺序是第几名呢');
           console.log(to,from,next);
-        next(vm=>{
-          vm.id='我被beforeRouteEnter的回调函数修改了';
-          /*
-          * as*/
-          /**
-           *    asda
-           */
-          function a() {
-
-          }
-        })
+          next();
+        // next('/')
       }
-
+*/
     }
 </script>
 

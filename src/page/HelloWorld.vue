@@ -9,19 +9,24 @@
             <li @click="goToIndex">点我去首页</li>
           </ul></content>
       </div>
+      <SvgIcon name="orderDiscount" width=".16" height=".16" :color="mainColor" class="text" ></SvgIcon>
     </div>
 
   </div>
 </template>
 
 <script>
-
+  import {mapState} from  'vuex'
+  import SvgIcon from '@/components/SvgIcon/index';
 export default {
   name: 'HelloWorld',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
     }
+  },
+  computed:{
+    ...mapState(['mainColor'])
   },
   methods: {
     goToIndex() {
@@ -29,6 +34,9 @@ export default {
       console.log(this.$router.push({ name: 'index', params: { id: 1 } }))
       //      console.log(this.$router.push('index'))
     }
+  },
+  components:{
+    SvgIcon
   }
 }
 </script>
