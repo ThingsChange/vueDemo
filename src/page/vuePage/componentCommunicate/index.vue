@@ -78,6 +78,8 @@
               </Row>
             </div>
           </Content>
+          <SvgIcon name="Logo" width="38.16" height="35.16" color="white" class="text" ></SvgIcon>
+
         </div>
       </div>
     </div>
@@ -88,6 +90,7 @@
   import  test1 from '@/components/isKeepAlive/test1'
   import  test2 from '@/components/isKeepAlive/test2'
   import  test3 from '@/components/isKeepAlive/test3'
+  import  SvgIcon from '@/components/SvgIcon'
     export default {
         name: "index",
       data(){
@@ -131,6 +134,7 @@
         'test1':test1,
         'test2':test2,
         'test3':test3,
+        SvgIcon
       },
       created(){
         this.teachers=[

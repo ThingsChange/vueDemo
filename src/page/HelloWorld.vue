@@ -16,8 +16,8 @@
 </template>
 
 <script>
-  import {mapState} from  'vuex'
-  import SvgIcon from '@/components/SvgIcon/index';
+  // import {mapState} from  'vuex'
+  // import SvgIcon from '@/components/SvgIcon/index';
 export default {
   name: 'HelloWorld',
   data() {
@@ -26,7 +26,7 @@ export default {
     }
   },
   computed:{
-    ...mapState(['mainColor'])
+    // ...mapState(['mainColor'])
   },
   methods: {
     goToIndex() {
@@ -36,7 +36,10 @@ export default {
     }
   },
   components:{
-    SvgIcon
+    // SvgIcon
+  },
+  created(){
+    console.log('这里是 lixiu 的结果-------------', process.env.lixiu)
   }
 }
 </script>

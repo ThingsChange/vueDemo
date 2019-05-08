@@ -12,12 +12,12 @@
   export default {
   name: 'App',
     methods:{
-      ...mapMutations([change_main_bg_color])
+      // ...mapMutations([change_main_bg_color])
     },
     created(){
       const gid = this.$route.query.groupID || this.$route.query.g || this.$route.query.groupid;
       const color = localStorage.getItem(`${gid}_mainColor`) || '#20c32f';
-      this.change_main_bg_color(color);
+      // this.change_main_bg_color(color);
     }
 }
 </script>

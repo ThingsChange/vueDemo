@@ -62,9 +62,9 @@ export default {
     // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
     // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
     // 可以访问组件实例 `this`
-    console.log(this)
+/*    console.log(this)
     console.log(to, from, next)
-    console.log(+this.getStatus(to.path))
+    console.log(+this.getStatus(to.path))*/
     this.name = getList(+this.getStatus(to.path))
     next()
     //    this.$router.push({path:to.path});
@@ -136,14 +136,14 @@ export default {
     console.groupEnd()
   },*/
   created() {
-    console.log('*******************************************************');
+   /* console.log('*******************************************************');
     console.log(this.getStatus(this.$route.path))
     console.group('created创建后的状态11111111111111111')
     console.log(this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是', this.$data)
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
-    console.groupEnd()
+    console.groupEnd()*/
     const path = this.$route.path;
     let submenu = '';
     for (let key in routeConfig) {
@@ -162,21 +162,21 @@ export default {
     });*/
   },
   beforeMount() {
-    console.group('beforeMount 挂载前状态111111111111111===============》')
+  /*  console.group('beforeMount 挂载前状态111111111111111===============》')
     console.log('%c%s', 'color:red', 'el     : ' + this.$el) // 已被初始化
     console.log(this.$el)
     console.log('%c%s', 'color:red', 'data   : ' + this.$data) // 已被初始化
     console.log('%c%s', 'color:red', 'message: ' + this.message) // 已被初始化
-    console.groupEnd()
+    console.groupEnd()*/
   },
   mounted() {
-    console.log(this.$route)
+  /*  console.log(this.$route)
     console.group('mounted挂载完毕之后的状态11111111111111111111')
     console.log(this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是', this.$data)
     console.log('%c%s', 'color: red', 'this.$el的值是' + this.$el)
     console.log('%c%s', 'color: red', 'this.$data的值是' + this.$data)
-    console.groupEnd();
+    console.groupEnd();*/
   }
 }
 </script>

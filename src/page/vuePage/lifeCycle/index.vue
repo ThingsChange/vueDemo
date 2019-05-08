@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { mapState, mapMutations, mapActions } from 'vuex'
+  // import { mapState, mapMutations, mapActions } from 'vuex'
   export default {
   name: 'index',
   data () {

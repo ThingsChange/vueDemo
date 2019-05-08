@@ -7,6 +7,7 @@ let Login = r => require(['@page/login'], r);
 let Layout = r => require(['@page/layout'], r);
 let LifeCycle = r => require(['@page/vuePage/lifeCycle'], r);
 let vuexTest = r => require(['@page/vuePage/vueX'], r);
+let vueTree = r => require(['@page/vuePage/tree/test'], r);
 let RouterTest = r => require(['@page/vuePage/routerTest'], r);
 let ObjectTest = r => require(['@page/vuePage/objectTest'], r);
 let ComponentCommunicate = r => require(['@page/vuePage/componentCommunicate'], r);
@@ -14,6 +15,7 @@ let ParentToChild = r => require(['@page/vuePage/componentCommunicate/parentToCh
 
 Vue.use(Router)
 let routerList = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -84,6 +86,7 @@ let routerList = new Router({
         component: LifeCycle
       },
       {
+        id: 'abc',
         path: '/componentCommunicate',
         name: '组件通信',
         meta: {
@@ -114,6 +117,14 @@ let routerList = new Router({
           name: 'VUEX值得存储'
         },
         component: vuexTest
+      },
+      {
+        path: '/vueTree',
+        name: '动态json表',
+        meta: {
+          name: '动态json表'
+        },
+        component: vueTree
       },
       {
         path: '/routerTest/:id',

@@ -1,17 +1,20 @@
 <template>
   <div class='layout-content'>
     <div class='layout-content-main'>
-    <Content>
-      <ul>
-        <li v-for="(item,index) in students" v-text="item.name" :key="index"></li>
-      </ul>
-      <ul>
-        <li v-text="teacher.name"></li>
-        <li v-text="teacher.age"></li>
-      </ul>
-      <button @click="handleObject(1)" v-text="'删除'"></button>
-      <button @click="handleTeacher" v-text="'修改教师属性'"></button>
-    </Content>
+      <Upload
+        ref="upload"
+        :before-upload="handleUpload"
+        :action="uploadUrl"
+        :data="excelMark"
+        :format=acceptType
+        :on-success="uploadSuccess2"
+        :on-format-error="handleFormatError"
+      >
+        <Button type="ghost" icon="ios-cloud-upload-outline">选择要导入的文件</Button>
+        <div v-if="file !== null">文件路径: {{ file.name }}
+          <Button type="text" @click.native.stop="upload" :loading="loadingStatus">{{ loadingStatus ? '上传中' : '确认导入' }}</Button>
+        </div>
+      </Upload>
     </div>
   </div>
 </template>
@@ -21,34 +24,43 @@
         name: "index",
       data(){
           return {
-            students:[
-              {name:'张三',id:1},
-              {name:'李四',id:2},
-              {name:'王五',id:3},
-              {name:'赵六',id:4},
-            ],
-            teacher:{
-              name:'金兴胜'
+            acceptType:['xls'],
+            uploadUrl:'admin.che001.com/backend-dfb/{这里面是电商的中间域名}/importExcel/电商的请求路径 ',
+            file: null,
+            loadingStatus: false,
+            excelMark:{
+              mark:'我是对excel的补充说明',
+              token:'1111111111111111111111111'
             }
           }
       },
       methods:{
-        handleObject(type){
-          console.log(typeof type);
-            if(type===1){
-                  // this.students=[{name:'赵六',id:4}];
-              // this.students[0].name='哎呀'
-              // this.students[4]={name:'哎呀',id:5}//不可以
-              this.students.push({name:'哎呀',id:5});
-              this.$set(this.students,5,{name:'新的',id:6})
-            }
+        handleFormatError (file) {
+          console.log(file.type);
+          this.$Notice.warning({
+            title: '文件格式不正确',
+            desc: `文件${file.name}格式不正确，请上传${this.acceptType.join('、')}格式的图片。`
+          });
         },
-        handleTeacher(){
-          // this.teacher['age']=38;//错
-          // Object.assign({},this.teacher,{age:38})//错
-          //下面是对的
-          // this.$set(this.teacher,'age',38)//对
-          // this.teacher=Object.assign({},this.teacher,{age:38})
+        handleUpload (file) {
+          console.log(file);
+          let isRight=this.acceptType.includes(file.name.split('.').pop())
+          if(isRight){
+            this.file = file
+          }else{
+            this.$Notice.warning({
+              title: '文件格式不正确',
+              desc: `文件${file.name}格式不正确，请上传${this.acceptType.join('、')}格式的图片。`
+            });
+          }
+          return false;
+        },
+        uploadSuccess2(res, file){
+          console.log(res, file);
+        },
+        upload () {
+          this.loadingStatus = true;
+          this.$refs.upload.post(this.file);
         }
       }
     }
