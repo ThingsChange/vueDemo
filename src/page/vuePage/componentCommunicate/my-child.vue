@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button @click="xiugaiAge">手动修改</button>
 <!--    <div>下面是子组件的内容：</div>
     父组件传递过来的名字：<input type="text" v-model="fromParent.name">
     父组件传递过来的年龄：<input type="text" v-model="fromParent.age"><span>{{fromParent.age}}</span>
@@ -46,6 +47,12 @@ import myChild1 from './my-child-1'
       },
       com_sex(){
         return this.sex
+      }
+    },
+    methods:{
+      xiugaiAge(){
+        // this.sex='女'
+        // this.parentInfo.age++
       }
     },
     watch:{

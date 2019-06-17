@@ -44,6 +44,7 @@
     },
     methods:{
       addAge(){
+        // this.$attrs.sex='女'
         this.$emit('timeFlies',1)
       }
     }

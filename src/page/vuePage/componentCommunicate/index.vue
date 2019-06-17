@@ -5,7 +5,7 @@
         <div class="layout-main-content">
           <Content>
             <Row>
-              <Col  span="16"  >这里是一个父子组件传值的例子，大河小河，你懂得</Col>
+              <Col  span="16"  >这里是一个父子组件传值的例子，大河小河，你懂得啊1</Col>
             </Row>
             <div>
                 <Row>
