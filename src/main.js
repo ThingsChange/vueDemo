@@ -9,6 +9,7 @@ import ElementUI from 'element-ui'// UI插件
 
 import iview from 'iview'
 import 'iview/dist/styles/iview.css';
+import './assets/css/common.scss'
 import router from './router'
 import axios from './common/axiosConfig'
 import './components/SvgIcon/registerSvg'
