@@ -1,17 +1,22 @@
+/* eslint-disable */
 import { url } from '../../helpers'
 
 const loadVconsole = () => {
-  require.ensure([], (require) => {
-    let VConsole = require('./vconsole');
-    console.log(VConsole.VConsole);
-    let a=VConsole.VConsole;
-    window.vConsole = new a();
-  }, 'mapshop');
+  require.ensure(
+    [],
+    require => {
+      let VConsole = require('./vconsole')
+      console.log(VConsole.VConsole)
+      let A = VConsole.VConsole
+      window.vConsole = new A()
+    },
+    'mapshop'
+  )
 }
 
 // 浏览器 console 中开启 debug
 // eslint-disable-next-line
-(function(){
+;(function() {
   window.utils = {}
   Object.defineProperty(window.utils, 'debug', {
     set(newVal) {
@@ -19,11 +24,11 @@ const loadVconsole = () => {
         loadVconsole()
       }
     }
-  });
+  })
 })()
 
 // url query 中开启 debug
-const params = url.query2Dict(window.location.href);
+const params = url.query2Dict(window.location.href)
 
 if (params.debug) {
   loadVconsole()

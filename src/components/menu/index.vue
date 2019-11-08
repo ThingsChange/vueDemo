@@ -1,16 +1,33 @@
 <template>
-  <Menu @on-select="selectMenu"  :active-name="AC" theme="dark" width="auto" accordion :open-names="onames" ref="menus">
-    <Submenu  v-for="(item,index) in routeConfig" :name="item.id" :key="index">
+  <Menu
+    @on-select="selectMenu"
+    :active-name="AC"
+    theme="dark"
+    width="auto"
+    accordion
+    :open-names="onames"
+    ref="menus"
+  >
+    <Submenu v-for="(item, index) in routeConfig" :name="item.id" :key="index">
       <template slot="title">
         <Icon type="ios-paper"></Icon>
-        <span :class="{'layout-hide-text':expandLeft}" v-text="item.text"></span>
+        <span
+          :class="{ 'layout-hide-text': expandLeft }"
+          v-text="item.text"
+        ></span>
       </template>
-      <MenuItem  v-for="(secondItem,index) in item.child" :name="secondItem.id" :key="index" v-text="secondItem.text">跨域实现</MenuItem>
+      <MenuItem
+        v-for="(secondItem, index) in item.child"
+        :name="secondItem.id"
+        :key="index"
+        v-text="secondItem.text"
+        >跨域实现</MenuItem
+      >
     </Submenu>
   </Menu>
 </template>
 <script>
-import {routeConfig} from '@/config/menuRouter'
+import { routeConfig } from '@/config/menuRouter'
 export default {
   name: 'index',
   data() {
@@ -26,30 +43,30 @@ export default {
   props: ['menuShow'],
   computed: {
     expandLeft() {
-      return !this.menuShow;
+      return !this.menuShow
     }
   },
   methods: {
     selectMenu(data) {
       let firstMenum = data.slice(0, data.indexOf('-'))
-      let toUrl = '';
-      console.log(1234);
+      let toUrl = ''
+      console.log(1234)
       routeConfig.filter(v => {
         if (v.id === firstMenum) {
           v.child.filter(x => {
             if (x.id === data) {
-              toUrl = x.path;
+              toUrl = x.path
             }
           })
         }
       })
-      this.$router.push(toUrl);
+      this.$router.push(toUrl)
     }
   },
   created() {
-    const path = this.$route.path;
-    console.log(this.$route);
-    let submenu = '';
+    const path = this.$route.path
+    console.log(this.$route)
+    let submenu = ''
     for (let key of routeConfig) {
       key.child.forEach(v => {
         if (v.path === path) {
@@ -57,10 +74,10 @@ export default {
         }
       })
     }
-    this.AC = submenu;
-    let arr = [];
-    arr[0] = submenu[0];
-    this.onames = arr;
+    this.AC = submenu
+    let arr = []
+    arr[0] = submenu[0]
+    this.onames = arr
     /* this.$nextTick(() => {
       if (!this.$refs.length) return;// 未登录页面所改
       this.$refs.menus.updateOpened();
@@ -70,6 +87,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

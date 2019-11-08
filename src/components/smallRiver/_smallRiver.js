@@ -26,8 +26,8 @@ export default {
   methods: {
     askForWater(item) {
       // console.log(this.$event);
-      console.log('这里干嘛的', item);
-      this.$emit('waterToggle', item);
+      console.log('这里干嘛的', item)
+      this.$emit('waterToggle', item)
     }
   }
 }

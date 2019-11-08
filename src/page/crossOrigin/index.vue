@@ -1,38 +1,40 @@
 <template>
-    <div>
-      <Bread/>
-      <div class='layout-content'>
-        <div class='layout-content-main'>
-      <Content>
-        <h1 :label="msg">{{msg}}</h1>
-        <h1 v-text="studyList"></h1>
-        <Row>
-          <Col>
-            <label>这里是从vuex中取到的值</label><span v-text="modifyTimes"></span>
-            <label>这里是从bus中传来的的值:</label><span style="color:red" v-text="busMsg"></span>
-          </Col>
-        </Row>
+  <div>
+    <Bread />
+    <div class="layout-content">
+      <div class="layout-content-main">
+        <Content>
+          <h1 :label="msg">{{ msg }}</h1>
+          <h1 v-text="studyList"></h1>
+          <Row>
+            <Col>
+              <label>这里是从vuex中取到的值</label>
+              <span v-text="modifyTimes"></span>
+              <label>这里是从bus中传来的的值:</label>
+              <span style="color:red" v-text="busMsg"></span>
+            </Col>
+          </Row>
 
-        <button @click="refresh(1)" v-text="button1"></button>
-        <button @click="refresh(2)" v-text="button2"></button>
-        <button @click="refresh(3)" v-text="button3"></button>
-        <button @click="getDataNotSimple" v-text="button5"></button>
-        <button @click="getData" v-text="button4"></button>
-        <button @click="getDataBy$" v-text="button6"></button>
-        <button @click="nativeCrosDomain" v-text="button7"></button>
-        <button @click="postMessage" v-text="button8"></button>
-        <button @click="socketIo" v-text="button9"></button>
-        <router-view :key="$route.fullpath" v-text="button3"></router-view>
-        <router-link to="2" :key="$route.fullpath" >About</router-link>
-        <iframe  id="otherOrign" src="http://localhost:3000"></iframe>
-        <h1 v-text="whichOne"></h1>
-        <ul>
-          <li v-for="item in name" v-text="item" :key="item"></li>
-        </ul>
-      </Content>
-        </div>
+          <button @click="refresh(1)" v-text="button1"></button>
+          <button @click="refresh(2)" v-text="button2"></button>
+          <button @click="refresh(3)" v-text="button3"></button>
+          <button @click="getDataNotSimple" v-text="button5"></button>
+          <button @click="getData" v-text="button4"></button>
+          <button @click="getDataBy$" v-text="button6"></button>
+          <button @click="nativeCrosDomain" v-text="button7"></button>
+          <button @click="postMessage" v-text="button8"></button>
+          <button @click="socketIo" v-text="button9"></button>
+          <router-view :key="$route.fullpath" v-text="button3"></router-view>
+          <router-link to="2" :key="$route.fullpath">About</router-link>
+          <iframe id="otherOrign" src="http://localhost:3000"></iframe>
+          <h1 v-text="whichOne"></h1>
+          <ul>
+            <li v-for="item in name" v-text="item" :key="item"></li>
+          </ul>
+        </Content>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -44,7 +46,7 @@ export default {
   name: 'index',
   data() {
     return {
-      busMsg:'busTest原始值',
+      busMsg: 'busTest原始值',
       theme2: 'dark',
       msg: '我是首页',
       studyList: '生命周期',
@@ -67,9 +69,7 @@ export default {
       console.log(this.$route.matched)
       return this.$route.params.id
     },
-    ...mapState({
-      modifyTimes:'modifyTimes'
-    })
+    ...mapState(['modifyTimes'])
   },
   /*  watch: {
     '$route' (to, from) {
@@ -126,13 +126,13 @@ export default {
       return urlStrArr[urlStrArr.length - 1]
     }
   },
-  created(){
-    console.log('他么的不进来吗');
+  created() {
+    console.log('他么的不进来吗')
     // debugger;
-    let that=this;
-    this.$root.bus.$on('busTest',t=>{
-      debugger;
-      that.busMsg+=t;
+    let that = this
+    this.$root.bus.$on('busTest', t => {
+      debugger
+      that.busMsg += t
     })
   }
   /* beforeCreate() {

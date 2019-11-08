@@ -1,4 +1,4 @@
 export default {
-    nearbyShopParams: {},
-    nearbyData: [],
-};
+  nearbyShopParams: {},
+  nearbyData: []
+}

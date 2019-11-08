@@ -1,6 +1,6 @@
 const state = {
-    foodList: [],
-    foodMap: {},
-};
+  foodList: [],
+  foodMap: {}
+}
 
-export default state;
+export default state

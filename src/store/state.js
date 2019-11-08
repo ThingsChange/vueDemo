@@ -6,4 +6,4 @@
 let state = {
   modifyTimes: 100
 }
-export default state;
+export default state

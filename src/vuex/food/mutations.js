@@ -1,14 +1,14 @@
 /* eslint-disable */
-const mutations = {};
+const mutations = {}
 
 mutations['set_food_list'] = (state, payload) => {
-    state.foodList = payload.foodCategories;
-    return state;
+  state.foodList = payload.foodCategories
+  return state
 }
 
 mutations['set_food_map'] = (state, payload) => {
-    state.foodMap = payload;
-    return state;
+  state.foodMap = payload
+  return state
 }
 
-export default mutations;
+export default mutations

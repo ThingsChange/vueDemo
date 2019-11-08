@@ -1,16 +1,46 @@
 <template>
-  <div  style="height: 100%; background-color: #0d6aad">
-    <Form ref="loginForm" :model="loginForm"   style="width: 366px;top:50%;margin-top:-85px;left: 50%;margin-left: -183px;position: absolute"  :rules="ruleCustom" :label-width="80">
+  <div style="height: 100%; background-color: #0d6aad">
+    <Form
+      ref="loginForm"
+      :model="loginForm"
+      style="width: 366px;top:50%;margin-top:-85px;left: 50%;margin-left: -183px;position: absolute"
+      :rules="ruleCustom"
+      :label-width="80"
+    >
       <div class="header">登&nbsp;&nbsp;&nbsp;&nbsp;陆</div>
 
-      <FormItem label="用户名" :label-width="80"  @keyup.enter.native="handleSubmit('loginForm')"   style="height: 40px;color:red"  label-for="name" prop="name">
-        <Input v-model="loginForm.name"  element-id="name" placeholder="请输入用户名"/>
+      <FormItem
+        label="用户名"
+        :label-width="80"
+        @keyup.enter.native="handleSubmit('loginForm')"
+        style="height: 40px;color:red"
+        label-for="name"
+        prop="name"
+      >
+        <Input
+          v-model="loginForm.name"
+          element-id="name"
+          placeholder="请输入用户名"
+        />
       </FormItem>
-      <FormItem label="密码" prop="password" @keyup.enter.native="handleSubmit('loginForm')" >
-        <Input type="password" v-model="loginForm.password" placeholder="请输入密码"/>
+      <FormItem
+        label="密码"
+        prop="password"
+        @keyup.enter.native="handleSubmit('loginForm')"
+      >
+        <Input
+          type="password"
+          v-model="loginForm.password"
+          placeholder="请输入密码"
+        />
       </FormItem>
       <FormItem style="text-align: center;">
-        <Button type="primary"  style="width: 100px" @click="handleSubmit('loginForm')">登陆</Button>
+        <Button
+          type="primary"
+          style="width: 100px"
+          @click="handleSubmit('loginForm')"
+          >登陆</Button
+        >
       </FormItem>
     </Form>
   </div>
@@ -38,7 +68,7 @@ export default {
       loginAPI
         .login(this.loginForm.name, this.loginForm.password)
         .then(res => {
-          console.log(res);
+          console.log(res)
           let { data } = res
           if (data.code === 10000) {
             window.loginStaus = true
@@ -46,7 +76,7 @@ export default {
             // let AUTH_TOKEN = headers['x-auth-token']
             // window.axios.defaults.headers.common['x-auth-token'] = AUTH_TOKEN
 
-            this.$router.push({name: 'index', params: {id: 1}});
+            this.$router.push({ name: 'index', params: { id: 1 } })
           } else if (data.code === 0) {
             this.$Notice.error({
               title: '登录提示',

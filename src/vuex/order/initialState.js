@@ -1,6 +1,6 @@
 export default {
-    orderDetail: {},
-    shop: {},
-    customer: {},
-    orderListParams: {},
-};
+  orderDetail: {},
+  shop: {},
+  customer: {},
+  orderListParams: {}
+}

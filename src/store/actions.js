@@ -5,6 +5,6 @@
  */
 export let increaseModifyTimes = (context, obj) => {
   setTimeout(function() {
-    context.commit('INCREASE_MODIFY', obj.amount);
+    context.commit('INCREASE_MODIFY', obj.amount)
   }, 2000)
 }

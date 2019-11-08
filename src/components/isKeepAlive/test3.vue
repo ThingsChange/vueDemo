@@ -26,12 +26,12 @@
   </Content>
 </template>
 <script>
-  export default {
-    data () {
-      return {
-        social: ['facebook', 'github'],
-        fruit: ['苹果']
-      }
+export default {
+  data() {
+    return {
+      social: ['facebook', 'github'],
+      fruit: ['苹果']
     }
   }
+}
 </script>

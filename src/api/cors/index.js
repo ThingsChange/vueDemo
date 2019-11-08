@@ -10,7 +10,7 @@ import $ from 'jquery'
 import io from 'socket.io-client'
 
 let cb = (...data) => {
-  console.log(123);
+  console.log(123)
   console.log(data, '我是回调')
 }
 window.cb = cb
@@ -42,7 +42,7 @@ let corsAPI = {
       url: 'http://localhost:3000/qyNativeJquery',
       dataType: 'jsonp',
       jsonpCallback: 'cb',
-      success: function (data) {
+      success: function(data) {
         console.log(234)
         console.log(data, '我是成功的回调')
       }
@@ -58,15 +58,15 @@ let corsAPI = {
   postMessage() {
     console.log(window.iframes)
     window.frames['otherOrign'].contentWindow.postMessage(
-      {text: '是'},
+      { text: '是' },
       'http://localhost:3000/index.html'
     )
   },
   socketIo() {
-    let socket = io('http://localhost:8090');
-    socket.on('news', function (data) {
+    let socket = io('http://localhost:8090')
+    socket.on('news', function(data) {
       console.log(data)
-      socket.emit('my other event', {text: '我是从端口过来的'})
+      socket.emit('my other event', { text: '我是从端口过来的' })
     })
   }
 }

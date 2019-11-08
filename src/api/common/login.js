@@ -16,7 +16,7 @@ const login = {
       headers: {
         'X-Requested-With': 'XMLHttpRequest'
       },
-      data: {name, pwd}
+      data: { name, pwd }
     })
   }
 }

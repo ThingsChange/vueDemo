@@ -9,12 +9,12 @@
   </Content>
 </template>
 <script>
-  export default {
-    data () {
-      return {
-        disabledSingle: true,
-        disabledGroup: '爪哇犀牛'
-      }
+export default {
+  data() {
+    return {
+      disabledSingle: true,
+      disabledGroup: '爪哇犀牛'
     }
   }
+}
 </script>

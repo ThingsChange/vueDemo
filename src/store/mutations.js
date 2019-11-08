@@ -6,10 +6,10 @@
 import * as types from './mutation-types'
 let mutations = {
   [types.INCREASE_MODIFY](state, time) {
-    state.modifyTimes += time;
+    state.modifyTimes += time
   },
   [types.SYNC_MINUS_MODIFY](state, obj) {
-    state.modifyTimes -= obj.amount;
+    state.modifyTimes -= obj.amount
   }
 }
-export default mutations;
+export default mutations

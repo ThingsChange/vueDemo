@@ -20,6 +20,11 @@ module.exports = {
   },*/
   // add your custom rules here
   rules: {
+    //兼容prettier
+    'no-param-reassign': 'off',
+    'import/extensions': 'off',
+    //end
+    'camelcase': 'off',
     "space-before-function-paren":  ["error", {
       "anonymous": "ignore",
       "named": "ignore",
@@ -34,24 +39,15 @@ module.exports = {
     'prefer-template': 'off',
     'spaced-comment':[2,"always"],
     "semi": 0,
-    // don't require .vue extension when importing
-    'import/extensions': [
-      'error',
-      'always',
-      {
-        js: 'never',
-        vue: 'never',
-      },
-    ],
     'linebreak-style': ['off', 'windows'],
     // disallow reassignment of function parameters
     // disallow parameter object manipulation except for specific exclusions
-    'no-param-reassign': [
+/*    'no-param-reassign': [
       'error',
       {
         props: false
       },
-    ],
+    ],*/
     // allow optionalDependencies
     'import/no-extraneous-dependencies': [
       'error',

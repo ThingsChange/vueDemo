@@ -1,7 +1,7 @@
-import store from '../../vuex';
-import state from './state';
-import mutations from './mutations';
+import store from '../../vuex'
+import state from './state'
+import mutations from './mutations'
 
-export const name = 'shop';
+export const name = 'shop'
 
-store.registerModule(name, { state, mutations });
+store.registerModule(name, { state, mutations })
