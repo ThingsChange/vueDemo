@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .people-wrap {
   margin-top: 50px;
 }
@@ -37,5 +37,22 @@ export default {
 .people-wrap >>> .test-deep-class {
   width: 18%;
   background: red;
+}
+.border-1px{
+  position: relative;
+&:after{
+   content: '';
+   position: absolute;
+   box-sizing: border-box;
+   top: 0;
+   left: 0;
+   width: 200%;
+   height: 200%;
+   border: 1px solid #000;
+   border-radius: 4px;
+   -webkit-transform: scale(0.5);
+   transform: scale(0.5);
+   -webkit-transform-origin: top left;
+ }
 }
 </style>
