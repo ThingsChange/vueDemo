@@ -10,29 +10,40 @@
           </ul></content
         >
         <Button class="btn-color">我就是测试</Button>
-        <Button type="primary" @click="changeColor">换色</Button>
+       <!-- <Button type="primary" @click="changeColor">换色</Button>
         <button class="liti-button">按钮</button>
         <div class="lvjing"></div>
-        <div class="jianbianse"></div>
+        <div class="jianbianse"></div>-->
+        <img src="../assets/logo.png" alt="">
+        <img @click="showGif=true" class="gifImg" src="http://res.hualala.com/basicdoc/7ee4df30-a216-4c4f-a45a-12db704a56c4.gif" alt="">
       </div>
       <!--<SvgIcon name="orderDiscount" width=".16" height=".16" :color="'green'" class="text" ></SvgIcon>-->
     </div>
+    <abc v-model="showGif" v-show="showGif"></abc>
   </div>
 </template>
 
 <script>
 // import {mapState} from  'vuex'
 // import SvgIcon from '@/components/SvgIcon/index';
+import abc from "@/page/abc";
+
 export default {
   name: 'HelloWorld',
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
-      flag: false
+      flag: false,
+      showGif:false
     }
   },
   computed: {
     // ...mapState(['mainColor'])
+  },
+  watch:{
+    showGif(val){
+      console.log('这里是 val 的结果-------------', val)
+    }
   },
   methods: {
     goToIndex() {
@@ -69,6 +80,7 @@ export default {
   },
   components: {
     // SvgIcon
+    abc
   },
   created() {
     // this.loadCssCode(' :root {--btnColor: green;}')
@@ -176,4 +188,8 @@ ie下可以使用渐变滤镜，请参阅： http://msdn.microsoft.com/en-us/lib
     to(rgb(250, 17, 33))
   );
 }
+  .gifImg{
+    height: 100px;
+    width: 100px;
+  }
 </style>

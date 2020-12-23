@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>下面是my-Child-1的内容：</div>
+    <h1>下面是my-Child-1的内容：</h1>
     <!-- 父组件传递过来的名字：<input type="text" v-model="fromParent.name">
     父组件传递过来的年龄：<input type="text" v-model="fromParent.age"><span>{{fromParent.age}}</span>
     父组件传递过来的性别：<input type="text" v-model="c_sex">
@@ -10,6 +10,7 @@
     父组件传递过来的年龄：<span>{{pinfofromComputed.age}}</span>
     父组件传递过来的性特别：<input type="text" v-model="com_sex">-->
     <p>$attrs:{{ $attrs }}</p>
+    <p>$props :{{ $props }}</p>
     <p>$listeners: {{ $listeners }}</p>
     <p>extralObj: {{ extralObj }}</p>
     <!--<p>  <button @click="addAge">年龄加1</button></p>-->
@@ -55,6 +56,10 @@ export default {
     'my-child-11': myChild11
   },
   methods: {
+    timeFlies(data) {
+      console.log('这里是 My-child-1的方法 的结果-------------', data)
+      this.parentInfo.age += data
+    }
     /*      addAge(){
         this.$emit('timeFlies',[123])
       }*/

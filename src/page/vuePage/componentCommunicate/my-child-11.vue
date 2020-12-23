@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>下面是my-Child-11的内容：</div>
+    <h1>下面是my-Child-11的内容：</h1>
     <!-- 父组件传递过来的名字：<input type="text" v-model="fromParent.name">
     父组件传递过来的年龄：<input type="text" v-model="fromParent.age"><span>{{fromParent.age}}</span>
     父组件传递过来的性别：<input type="text" v-model="c_sex">

@@ -56,19 +56,21 @@
                   <button slot="button" @click="adjustSmallDisCharge(4)">
                     这是slot在父元素生成的button,作用是暂停
                   </button>
-                  <template slot="slotScopeTest" scope="props">
-                    <li class="abc">{{ props.text2 }}</li>
+                  <template slot="slotScopeSelf" >
+                    <h1>父组件的作用域，无scope</h1>
+                    <li >{{teacher}}</li>
                   </template>
                   <template slot="slotScopeTest" scope="props">
                     <button class="bc-green">{{ props.text2 }}</button>
                   </template>
-
-                  <template slot="slotScopeSelf" scope="props">
-                    <ul>
-                      <li class="bc-red" v-text="props.teacher"></li>
-                    </ul>
-                    <span></span>
-                  </template>
+                    <template slot="slotScopeSelf1" scope="abc">
+                      <span>此处的scope其实就是子组件传递过来的 props属性 </span>
+                      <span >{{abc}}</span>
+                      <ul>
+                      <span class="bc-red" v-text="abc.teacher"></span>
+                      <span></span>
+                      </ul>
+                    </template>
                 </small-river>
               </Col>
             </Row>
@@ -151,9 +153,9 @@ export default {
   },
   created() {
     this.teachers = [
-      { name: '小A老师' },
-      { name: '小B老师' },
-      { name: '小C老师' }
+      { name: '小A老师',age:11 },
+      { name: '小B老师',age:12 },
+      { name: '小C老师a',age:13 }
     ]
     this.students.length = 1
   },

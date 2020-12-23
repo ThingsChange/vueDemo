@@ -1,16 +1,11 @@
 <template>
   <div>
     <div>下面是父组件的内容</div>
-    名字：<input type="text" v-model="parentInfo.name" /> 年龄：<input
-      type="text"
-      v-model="parentInfo.age"
-    />
+    名字：<input type="text" v-model="parentInfo.name" />
+    年龄：<input type="text" v-model="parentInfo.age"  />
     性别：<input type="text" v-model="sex" />
-    <my-child
-      :parent-info="parentInfo"
-      :extral-obj="extralObj"
-      :sex="sex"
-      v-on:timeFlies="timeFlies"
+    <my-child :parent-info="parentInfo" :extral-obj="extralObj"
+              :sex="sex" v-on:timeFlies="timeFlies"
     ></my-child>
   </div>
 </template>

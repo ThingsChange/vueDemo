@@ -21,6 +21,22 @@ import menu from './components/menu'
 import treeMmenu from './page/vuePage/tree/index1'
 
 import './assets/js/debug'
+
+
+Vue.directive('button', {
+  inserted(el, binding) {
+    el.style.background = 'green';
+  },
+  update(el, binding) {
+    console.log('这里是 binding 的结果-------------', binding);
+    el.style.background = binding.value ? '#f6f6f6' : 'green'
+    el.toggleAttribute('disabled', binding.value)
+    el.style.pointerEvents = binding.value ? 'none' : 'auto';
+    console.log('这里是 el 的结果-------------', el);
+    console.log('这里是  的结果-------------', getComputedStyle(el).pointerEvents);
+  }
+})
+
 // const Vue = require('vue')
 Vue.component('Bread', bread)
 Vue.component('MenuSelf', menu)

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="xiugaiAge">手动修改</button>
+    <button @click="xiugaiAge">MyChild手动修改</button>
     <!--    <div>下面是子组件的内容：</div>
     父组件传递过来的名字：<input type="text" v-model="fromParent.name">
     父组件传递过来的年龄：<input type="text" v-model="fromParent.age"><span>{{fromParent.age}}</span>
@@ -10,8 +10,10 @@
     父组件传递过来的年龄：<input type="text" v-model="pinfofromComputed.age">
     父组件传递过来的年龄：<span>{{pinfofromComputed.age}}</span>
     父组件传递过来的性特别：<input type="text" v-model="com_sex">-->
+    <H1>MyChild页面</H1>$attrs：包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。
     <p>$attrs: {{ $attrs }}</p>
-    <p>$listeners: {{ $listeners }}</p>
+    <p>$props: {{ $props }}</p><b>$props：当前组件接收到的 props 对象。Vue 实例代理了对其 props 对象属性的访问。</b>
+    <p>$listeners: {{ $listeners }}</p> <b>$listeners：包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on="$listeners" 传入内部组件——在创建更高层次的组件时非常有用。</b>
     <p>my-Child-1组件</p>
     <my-child1 v-bind="$attrs" v-on="$listeners"></my-child1>
   </div>
@@ -31,14 +33,14 @@ export default {
       // c_sex:this.sex//父组件的值作为初始值
     }
   },
-  /*props: {
+  props: {
       parentInfo: {
         type: Object
       },
       sex:{
         type:String
       }
-    },*/
+    },
   computed: {
     pinfofromComputed() {
       return Object.assign({}, this.parentInfo)
@@ -51,6 +53,7 @@ export default {
     xiugaiAge() {
       // this.sex='女'
       // this.parentInfo.age++
+        this.$emit('timeFlies', 1)
     }
   },
   watch: {
@@ -70,6 +73,9 @@ export default {
   },
   components: {
     'my-child1': myChild1
+  },
+  mounted() {
+    console.log('这里是 this.$props 的结果-------------', this.$props,this.$listeners)
   }
 }
 </script>

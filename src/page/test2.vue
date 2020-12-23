@@ -279,7 +279,7 @@
 </template>
 
 <script>
-import { routeConfig } from './config'
+import { routeConfig } from '../config/menuRouter'
 export default {
   data() {
     return {
