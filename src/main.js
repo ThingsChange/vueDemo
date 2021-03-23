@@ -11,7 +11,7 @@ import 'iview/dist/styles/iview.css'
 import './assets/css/common.scss'
 import router from './router'
 import axios from './common/axiosConfig'
-import './components/SvgIcon/registerSvg'
+import './components/SvgIcon/registerSvg';;;
 
 // 注册全局组件
 // import './components/SvgIcon/registerSvg'
