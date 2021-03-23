@@ -15,7 +15,7 @@ import './components/SvgIcon/registerSvg';
     const person={
       name:'小明',
       age:22
-    }
+    };
 
 // 注册全局组件
 // import './components/SvgIcon/registerSvg'
