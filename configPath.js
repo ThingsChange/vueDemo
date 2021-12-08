@@ -20,7 +20,8 @@ module.exports = {
       '@c': resolve('./src/components'),
       'vue$': 'vue/dist/vue.esm.js',
       '@h': resolve('./src/helpers'),
-      '@v': resolve('./src/vuex')
+      '@v': resolve('./src/vuex'),
+      '@page': resolve('./src/page')
     }
   }
 }

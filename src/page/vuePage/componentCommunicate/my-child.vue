@@ -1,6 +1,11 @@
 <template>
   <div>
     <button @click="xiugaiAge">MyChild手动修改</button>
+    <button @click="changeSex">泰国如何不服军役------子</button>
+    <button @click="xiugaiAge">修改年龄------子</button>
+    <p>{{sex}}</p>
+<!--    <p>{{parentInfo.age}}</p>-->
+<!--    <p>{{age}}</p>-->
     <!--    <div>下面是子组件的内容：</div>
     父组件传递过来的名字：<input type="text" v-model="fromParent.name">
     父组件传递过来的年龄：<input type="text" v-model="fromParent.age"><span>{{fromParent.age}}</span>
@@ -39,7 +44,8 @@ export default {
       },
       sex:{
         type:String
-      }
+      },
+    age:['String']
     },
   computed: {
     pinfofromComputed() {
@@ -50,7 +56,13 @@ export default {
     }
   },
   methods: {
+    changeSex(){
+      this.sex=this.sex==="男"?'女':'男'
+      this.$emit('update:sex', this.sex)
+    },
     xiugaiAge() {
+      // this.age++;
+      // this.$emit('update:age', this.age)
       // this.sex='女'
       // this.parentInfo.age++
         this.$emit('timeFlies', 1)
@@ -60,7 +72,7 @@ export default {
     sex: {
       deep: true,
       handler: function(newVal) {
-        this.c_sex = this.sex
+        // this.c_sex = this.sex
       }
     },
     parentInfo: {
