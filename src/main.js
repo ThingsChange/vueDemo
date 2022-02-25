@@ -64,55 +64,54 @@ router.beforeEach((to, from, next) => {
 }*/
 // sync(store, router)
 
-Sentry.init({
-  Vue,
-  dsn: process.env.VUE_APP_SENTRY_DSN,
-  release: process.env.VUE_APP_SENTRY_RELEASE,
-  integrations: [
-    new Integrations.BrowserTracing({
-      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-      tracingOrigins: [process.env.VUE_APP_HOST_URL, /^\//]
-    })
-    /* new SentryRRWeb({
-      // default is empty
-      checkoutEveryNth: 100,
-      // default is 5 minutes
-      checkoutEveryNms: 15 * 60 * 1000,
-      // on by default
-      maskAllInputs: false,
-    }), */
-  ],
-  // 匹配到这哥数组里面的都不会发送给sentry
-  ignoreErrors: [
-    'haoxihuanmahuateng'
-  ],
-  maxBreadcrumbs: 30,
-  tracesSampleRate: 0.01,
-  // 错误发送前做过滤，数据修改啊打标识啊  等等
-  beforeSend(event, hint) {
-    // console.log('这里是   event  ------------', event);
-    // console.log('这里是   hint  ------------', hint);
-    // const error = hint.originalException;
-    const error2 = hint.originalException;
-    if (
-      error2 &&
-      error2.message &&
-      error2.message.match(/haoxihuanmahuateng /i)
-    ) {
-      // 用来做分组
-      event.fingerprint = ['maoxian'];
-      // 不要该事件
-      // return null
+if (process.env.NODE_ENV === 'production') {
+  Sentry.setTag('shop-GroupID', 123)
+  Sentry.setTag('shop-ShopID', 234)
+  Sentry.init({
+    Vue,
+    dsn: process.env.VUE_APP_SENTRY_DSN,
+    release: process.env.VUE_APP_SENTRY_RELEASE,
+    integrations: [
+      new Integrations.BrowserTracing({
+        routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+        tracingOrigins: [process.env.VUE_APP_HOST_URL, /^\//]
+      })
+      /* new SentryRRWeb({
+        // default is empty
+        checkoutEveryNth: 100,
+        // default is 5 minutes
+        // checkoutEveryNms: 15 * 60 * 1000,
+        // on by default
+        maskAllInputs: false,
+      }), */
+    ],
+    ignoreErrors: ['AbortError', 'junnuli'],
+    maxBreadcrumbs: 30,
+    tracesSampleRate: 0.01,
+    beforeSend(event, hint) {
+      const currentRouteQuery = router.currentRoute.query;
+      event.tags['shop-GroupID'] = currentRouteQuery.groupID || currentRouteQuery.g
+      event.tags['shop-ShopID'] = router.currentRoute.params.shopID || currentRouteQuery.shopID
+      // event.tags.ma_h5 = Cookie.get('ma_h5').split(':')[1];
+      // event.tags.qy_currentPage= router.currentRoute
+      console.log('这里是   event  ------------', event);
+      console.log('这里是   hint  ------------', hint);
+      // const error = hint.originalException;
+      const error2 = hint.originalException;
+      if (
+        error2 &&
+        error2.message &&
+        error2.message.match(/AbortError|aborted /i)
+      ) {
+        // 用来做分组
+        event.fingerprint = ['取消'];
+        // 不要该事件
+        // return null
+      }
+      return event;
     }
-    return event;
-  },
-  // 对错误相关面包屑过滤，可以考虑通过category  或者lever  分别过滤
-  beforeBreadcrumb(breadCrumb, hint) {
-    // The severity of an event. The level is set to one of five values, which are — in order of severity — fatal, error, warning, info, and debug.
-    // if (breadCrumb.category === 'console') return null
-    return breadCrumb
-  }
-});
+  });
+}
 
 new Vue({
   el: '#app',
